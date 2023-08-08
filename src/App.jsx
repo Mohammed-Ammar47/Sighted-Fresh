@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn'
 import Header from './components/Header'
 import Product from './pages/Product'
 import Cart from './pages/Cart'
+import ForgotPassword from './pages/ForgotPassword'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
     <Route path='/cart' element={<Cart />} />
     <Route path='/register' element={<Register />} />
     <Route path='/sign-in' element={<SignIn />} />
+    <Route path='/forgot-password' element={<ForgotPassword />} />
     <Route path='/:productId' element={<Product />} />
     </Routes>
     </Router>

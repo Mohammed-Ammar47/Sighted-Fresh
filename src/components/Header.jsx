@@ -1,11 +1,25 @@
-import React, { useState } from 'react'
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import React, { useEffect, useState } from 'react'
 import { GrClose , GrMenu} from "react-icons/gr";
-import { PiUserCirclePlusBold , PiShoppingCartBold} from "react-icons/pi";
+import { PiUserCirclePlusBold , PiShoppingCartBold , PiUserCircleBold} from "react-icons/pi";
 import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const [open , setOpen] = useState(false)
+  const [userState , setUserState] = useState('signed out')
   const navigate = useNavigate()
+  const auth = getAuth()
+
+  useEffect(() => {
+    onAuthStateChanged( auth, ( user) => {
+      if (user) {
+        setUserState('signed in')
+      } else {
+        setUserState('signed out')
+      }
+    })
+  }, [auth]);
+
   return (<>
     <header className='flex justify-between items-center pt-2 px-2 bg-[#F1F1F1]'>
     
@@ -23,7 +37,16 @@ export default function Header() {
     </div>
     <ul className='flex px-3 mr-5 space-x-2  sm:space-x-5' >
       <li onClick={() => {navigate('/cart')}} className=' flex items-center h-8 sm:h-10 rounded-full text-2xl sm:text-lg font-semibold whitespace-nowrap px-1 sm:pt-0 sm:px-4 focus:outline-none focus:ring-2 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] focus:ring-white cursor-pointer'><p className='hidden sm:flex' >Cart </p> <PiShoppingCartBold  className='sm:hidden px-0'/>  </li>
-      <li onClick={() => {navigate('/sign-in')}} className=' flex items-center h-8 sm:h-10 rounded-full text-2xl sm:text-lg font-semibold whitespace-nowrap px-1 sm:pt-0 sm:px-4 focus:outline-none focus:ring-2 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] focus:ring-white cursor-pointer'><p className='hidden sm:flex' >Sign In </p><PiUserCirclePlusBold  className='sm:hidden px-0' /></li>
+      <li onClick={() => { navigate('/profile') }} className=' flex items-center h-8 sm:h-10 rounded-full text-2xl sm:text-lg font-semibold whitespace-nowrap px-1 sm:pt-0 sm:px-4 focus:outline-none focus:ring-2 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] focus:ring-white cursor-pointer'>
+      {userState === 'signed out' 
+     ? <>
+     <p className='hidden sm:flex' >Sign In </p><PiUserCirclePlusBold  className='sm:hidden px-0' />
+     </>
+     : <> 
+     <p className='hidden sm:flex' >profile</p><PiUserCircleBold  className='sm:hidden px-0' />
+     </>
+     }
+    </li>
     </ul>
     </header>
     </>

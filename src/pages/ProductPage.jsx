@@ -19,6 +19,7 @@ export default function ProductPage() {
     color: "",
     size: "",
   });
+  console.log(auth.currentUser);
   const navigate = useNavigate();
   function handleChange(e) {
     setFormData({
@@ -48,9 +49,10 @@ export default function ProductPage() {
     const formDataCopy = {
       ...formData,
       quantity,
-      colorId,
+      itemPrice: product.regularPrice,
+      productImage,
       productId: param.productId,
-      useRef: auth.currentUser.uid,
+      userRef: auth.currentUser.uid,
     };
     const docRef = collection(db, "cartItems");
     await addDoc(docRef, formDataCopy);
@@ -75,14 +77,14 @@ export default function ProductPage() {
   if (loading) {
     return <Spinner />;
   }
-
+  console.log(auth.currentUser);
   return (
     <>
       <section className="flex justify-center items-center">
         <div className="flex flex-col lg:flex-row mx-3  my-7 p-2 rounded-lg  justify-center border-2 border-red-600 items-center lg:w-[800px] bg-white">
           <div className="basis-1/3 lg:relative flex flex-col lg:w-80 lg:h-[27rem]  overflow-hidden rounded-lg lg:block ">
             <img
-              className=" lg:absolute inset-0 w-full h-full object-cover"
+              className=" lg:absolute  inset-0 w-full h-full object-contain"
               src={productImage == null ? product.image[0] : productImage}
             />
           </div>

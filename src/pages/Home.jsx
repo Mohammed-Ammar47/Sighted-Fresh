@@ -14,10 +14,12 @@ import LogoCarousel from "../components/LogoCarousel";
 import SalesCarousel from "../components/SalesCarousel";
 import { Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
-
+import { Dialog, Transition } from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [latestProducts, setLatestProducts] = useState(null);
+  const [isShowing, setIsShowing] = useState(false);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -116,6 +118,20 @@ export default function Home() {
       </div>
 
       {/* Trending products */}
+      <button onClick={() => setIsShowing((isShowing) => !isShowing)}>
+        Toggle
+      </button>
+      <Transition
+        show={isShowing}
+        enter="transition-opacity duration-75"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-150"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        I will fade in and out
+      </Transition>
     </>
   );
 }

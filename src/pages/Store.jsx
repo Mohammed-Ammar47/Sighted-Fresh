@@ -1,24 +1,41 @@
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { db } from "../Firebase";
 import Spinner from "../components/Spinner";
 import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
-import { getAuth } from "firebase/auth";
 import { AiOutlineSearch } from "react-icons/ai";
+import { AdjustmentsVerticalIcon } from "@heroicons/react/24/outline";
+import { GrMenu } from "react-icons/gr";
+
+// import Filter from "../components/Filter";
 
 export default function Store() {
+  const [openSidebar, setOpenSidebar] = useState(false);
   const [loading, setLoading] = useState(true);
   const [allProducts, setAllProducts] = useState(null);
   const [formData, setFormData] = useState({
     searchInput: "",
   });
-
+  const [filter, setFilter] = useState([]);
+  const categories = [
+    { displayName: "Shirts", useName: "shirts" },
+    { displayName: "Polo Shirts", useName: "polo-shirts" },
+    { displayName: "T Shirts", useName: "t-shirts" },
+    { displayName: "Pants", useName: "pants" },
+    { displayName: "Shoes", useName: "shoes" },
+  ];
   useEffect(() => {
     async function fetchProducts() {
+      console.log(filter);
+
       try {
         const productsRef = collection(db, "products");
-        const q = query(productsRef, orderBy("timestamp", "desc"));
+        const q = query(
+          productsRef,
+          filter.length > 0 && where("type", "in", filter),
+          orderBy("timestamp", "desc")
+        );
         const querySnapshot = await getDocs(q);
         const products = [];
         querySnapshot.forEach((doc) => {
@@ -34,12 +51,23 @@ export default function Store() {
       }
     }
     fetchProducts();
-  }, []);
+  }, [filter]);
 
   function onChange(e) {
     setFormData({ [e.target.name]: e.target.value });
   }
 
+  function filterProducts(e) {
+    if (e.target.checked) {
+      filter.push(e.target.value);
+      setFilter((prevFiltered) => [...prevFiltered]);
+    } else {
+      const index = filter.indexOf(e.target.value);
+      filter.splice(index, 1);
+      setFilter((prevFiltered) => [...prevFiltered]);
+    }
+    console.log(filter);
+  }
   async function onSubmit(e) {
     e.preventDefault();
     try {
@@ -91,28 +119,65 @@ export default function Store() {
           </div>
         </div>
       </form>
-      <div className="md:mx-12">
-        <div className="flex flex-row justify-between text-xl font-semibold">
-          <p>Latest products</p>
-          <p className="text-red-600 ">
-            <Link
-              to={"/store"}
-              className="text-red-600 hover:text-red-800 transition duration-200 ease-in-out"
-            >
-              Show more
-            </Link>
-          </p>
+      <aside
+        class={`absolute sm:relative top-32 sm:top-0 left-0 z-40 w-60 h-screen transition-transform duration-300 ${
+          openSidebar ? "translate-x-0" : "-translate-x-full"
+        }  sm:translate-x-0`}
+        aria-label="Sidebar"
+      >
+        <button
+          type="button"
+          className="-right-11 absolute items-center p-2 mt-2 ml-3 text-sm bg-gray-50 -z-10 border-gray-50 text-gray-500 rounded-tr-lg rounded-br-lg sm:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
+        >
+          <span className="sr-only">Open sidebar</span>
+          <AdjustmentsVerticalIcon
+            className="w-8 h-8"
+            onClick={() => {
+              setOpenSidebar(!openSidebar);
+            }}
+          />
+        </button>
+        <div className="h-full px-3 py-4 overflow-y-auto bg-white ">
+          <div>
+            <h3 className="mb-4 font-semibold text-gray-900 ">Category</h3>
+            <ul className="w-48 text-sm font-medium text-gray-900 bg-gray-50 border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
+              {categories.map((category, index) => (
+                <li key={index} class="w-full   ">
+                  <div class="flex items-center pl-1">
+                    <input
+                      id="check"
+                      onChange={filterProducts}
+                      type="checkbox"
+                      value={category.useName}
+                      name="category"
+                      class="w-5 h-5 accent-inherit bg-current text-red-600 checked:bg-red-600 checked:text-red-600 border-gray-300 rounded focus:ring-red-50 focus:ring-2 "
+                    />
+                    <label class="w-full py-3 ml-2 text-sm font-medium text-gray-900 ">
+                      {category.displayName}
+                    </label>
+                  </div>
+                </li>
+              ))}
+            </ul>{" "}
+          </div>
         </div>
-        <ul className="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mt-5 mb-5 ">
-          {allProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              product={product.data}
-            />
-          ))}
-        </ul>
+      </aside>
+      <div className="p-1 md:ml-4">
+        <div className="p-2 border-2 border-gray-200 border-dashed rounded-lg">
+          <div className="">
+            <ul className="grid grid-cols-2 md:grid-cols-3  ">
+              {allProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  product={product.data}
+                />
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
+      ;
     </>
   );
 }

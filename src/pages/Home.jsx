@@ -13,13 +13,10 @@ import Spinner from "../components/Spinner";
 import LogoCarousel from "../components/LogoCarousel";
 import SalesCarousel from "../components/SalesCarousel";
 import { Link } from "react-router-dom";
-import { getAuth } from "firebase/auth";
-import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [latestProducts, setLatestProducts] = useState(null);
-  const [isShowing, setIsShowing] = useState(false);
 
   useEffect(() => {
     async function fetchProducts() {

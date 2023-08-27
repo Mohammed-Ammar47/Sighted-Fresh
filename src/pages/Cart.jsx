@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CartItem from "../components/CartItem";
 import { getAuth } from "firebase/auth";
 import {

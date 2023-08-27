@@ -1,11 +1,4 @@
-import {
-  and,
-  collection,
-  getDocs,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import React, { useEffect, useState, Fragment } from "react";
 import { db } from "../Firebase";
 import Spinner from "../components/Spinner";
@@ -13,9 +6,7 @@ import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AdjustmentsVerticalIcon } from "@heroicons/react/24/outline";
-import { GrMenu } from "react-icons/gr";
-import InputRange from "react-input-range";
-import "react-input-range/lib/css/index.css";
+
 // import Filter from "../components/Filter";
 
 export default function Store() {

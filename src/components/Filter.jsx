@@ -117,3 +117,15 @@
 //     </div>
 //   </Dialog>
 // </Transition.Root>;
+
+{
+  /* <div className="w-full md:w-48 bg-white shadow-md py-7 px-3 rounded-lg ">
+                <InputRange
+                  id="InputRange"
+                  maxValue={50}
+                  minValue={0}
+                  value={inputs?.price}
+                  onChange={filterPrice}
+                />
+              </div> */
+}

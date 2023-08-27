@@ -1,14 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {
+  collection,
+  deleteField,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  setDoc,
+  updateDoc,
+  where,
+} from "firebase/firestore";
+import { db } from "../Firebase";
+import Spinner from "../components/Spinner";
 
 export default function Profile() {
+  const [loading, setLoading] = useState(false);
   const auth = getAuth();
   const navigate = useNavigate();
   function loggedOut() {
     auth.signOut();
     navigate("/");
+  }
+
+  // useEffect(() => {
+  //   async function fetchProducts() {
+  //     try {
+  //       const productsRef = collection(db, "products");
+  //       const q = query(
+  //         productsRef,
+  //         where("type", "in", ["polo-shirts", "t-shirts", "shirts"]),
+  //         orderBy("timestamp", "desc")
+  //       );
+  //       const querySnapshot = await getDocs(q);
+  //       const products = [];
+  //       querySnapshot.forEach((doc) => {
+  //         return products.push(doc.id);
+  //       });
+  //       console.log(products);
+  //       async function sale() {
+  //         try {
+  //           products.forEach((id, index) => {
+  //             updateDoc(doc(db, "products", id), {
+  //               discountRate: 0.3,
+  //             });
+  //           });
+  //         } catch (error) {
+  //           console.log(error);
+  //         }
+  //       }
+  //       sale();
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   fetchProducts();
+  // }, []);
+
+  if (loading) {
+    return <Spinner />;
   }
   console.log(auth.currentUser);
   return (

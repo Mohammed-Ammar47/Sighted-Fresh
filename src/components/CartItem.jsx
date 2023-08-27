@@ -40,9 +40,29 @@ export default function CartItem({ id, item, onDelete }) {
             {/* Price */}
             <div className="flex  mt-2 font-semibold">
               <dt className="sr-only">price</dt>
-              <dd className="px-2 ring-1 ring-slate-500 rounded ">
-                ${cartProduct.regularPrice}
-              </dd>
+              <div className="flex flex-row">
+                {cartProduct.discountRate === 0 ? (
+                  <dd className="px-2 ring-1 ring-slate-500 rounded ">
+                    ${cartProduct.regularPrice}
+                  </dd>
+                ) : (
+                  <>
+                    <dd className="mr-1 px-1 ring-1 ring-slate-500 rounded line-through">
+                      ${cartProduct.regularPrice}
+                    </dd>
+                    <dd className="ml-1 px-1 ring-1 ring-slate-500 rounded ">
+                      {" "}
+                      ${""}
+                      {Math.floor(
+                        (cartProduct.regularPrice *
+                          (1 - cartProduct.discountRate) *
+                          100) /
+                          100
+                      )}
+                    </dd>
+                  </>
+                )}
+              </div>
             </div>
             {/* Color */}
             <div className="flex  mt-2 font-semibold">
@@ -74,8 +94,15 @@ export default function CartItem({ id, item, onDelete }) {
           >
             <CiSquareRemove />
           </button>
+
           <p className="px-1.5 text-3xl  my-2.5 font-semibold rounded w-auto">
-            ${cartProduct.regularPrice * item.quantity}
+            $
+            {Math.floor(
+              (cartProduct.regularPrice *
+                (1 - cartProduct.discountRate) *
+                100) /
+                100
+            ) * item.quantity}
           </p>
         </div>
       </article>

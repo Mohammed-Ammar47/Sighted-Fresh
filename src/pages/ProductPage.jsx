@@ -13,22 +13,18 @@ export default function ProductPage() {
   const [loading, setLoading] = useState(true);
   const param = useParams();
   const [productImage, setProductImage] = useState(null);
-  const [colorId, setColorId] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const [formData, setFormData] = useState({
     color: "",
     size: "",
   });
-  console.log(auth.currentUser);
   const navigate = useNavigate();
   function handleChange(e) {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-
     if (e.target.name == "color") {
-      setColorId(e.target.id);
       setProductImage(product.image[e.target.id]);
     }
   }
@@ -50,6 +46,7 @@ export default function ProductPage() {
       ...formData,
       quantity,
       itemPrice: product.regularPrice,
+      itemDiscount: product.discountRate,
       productImage,
       productId: param.productId,
       userRef: auth.currentUser.uid,
@@ -77,7 +74,6 @@ export default function ProductPage() {
   if (loading) {
     return <Spinner />;
   }
-  console.log(auth.currentUser);
   return (
     <>
       <section className="flex justify-center items-center">
@@ -95,11 +91,28 @@ export default function ProductPage() {
               <div>
                 <h1 className="text-xl font-semibold py-1">{product.name}</h1>
               </div>
-              <div>
-                <p className="text-xl font-normal py-2">
-                  ${product.regularPrice}
-                </p>
+              <div className="flex flex-row text-xl font-semibold">
+                {product.discountRate === 0 ? (
+                  <p className="pr-2  py-1">${product.regularPrice}</p>
+                ) : (
+                  <>
+                    <p className="pr-2 line-through py-1">
+                      ${product.regularPrice}
+                    </p>
+                    <p className=" py-1">
+                      {" "}
+                      $
+                      {Math.floor(
+                        (product.regularPrice *
+                          (1 - product.discountRate) *
+                          100) /
+                          100
+                      )}
+                    </p>
+                  </>
+                )}
               </div>
+
               {/* Colors */}
               <div>
                 <p className="text-xl font-semibold py-2">Colors</p>
@@ -109,7 +122,7 @@ export default function ProductPage() {
                       <input
                         id={index}
                         onChange={handleChange}
-                        className="sr-only peer"
+                        className="sr-only peer "
                         name="color"
                         type="radio"
                         value={color.name}
@@ -117,7 +130,7 @@ export default function ProductPage() {
                       />
                       <div className="w-8 h-8 lg:w-12 lg:h-12 rounded-full flex items-center justify-center  peer-checked:border-2 peer-checked:p-0 peer-checked:border-black peer-checked:bg-white cursor-pointer">
                         <span
-                          className={`w-6 h-6 lg:w-9 lg:h-9 rounded-full `}
+                          className={`w-6 h-6 lg:w-9 lg:h-9 rounded-full shadow-gray-500 shadow-lg`}
                           style={{ backgroundColor: color.hex }}
                         ></span>
                       </div>

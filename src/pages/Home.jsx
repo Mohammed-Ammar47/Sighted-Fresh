@@ -25,7 +25,7 @@ export default function Home() {
     async function fetchProducts() {
       try {
         const productsRef = collection(db, "products");
-        const q = query(productsRef, orderBy("timestamp", "desc"), limit(4));
+        const q = query(productsRef, orderBy("timestamp", "desc"), limit(6));
         const querySnapshot = await getDocs(q);
         const products = [];
         querySnapshot.forEach((doc) => {
@@ -34,7 +34,6 @@ export default function Home() {
             data: doc.data(),
           });
         });
-        console.log(products);
         setLatestProducts(products);
         setLoading(false);
       } catch (error) {
@@ -106,7 +105,7 @@ export default function Home() {
             </Link>
           </p>
         </div>
-        <ul className="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mt-5 mb-5 ">
+        <ul className="sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6  mt-5 mb-5 ">
           {latestProducts.map((product) => (
             <ProductCard
               key={product.id}
@@ -118,20 +117,6 @@ export default function Home() {
       </div>
 
       {/* Trending products */}
-      <button onClick={() => setIsShowing((isShowing) => !isShowing)}>
-        Toggle
-      </button>
-      <Transition
-        show={isShowing}
-        enter="transition-opacity duration-75"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-150"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        I will fade in and out
-      </Transition>
     </>
   );
 }

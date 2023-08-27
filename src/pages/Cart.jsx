@@ -52,7 +52,12 @@ export default function Cart() {
   const sum = () => {
     let subTotal = 0;
     CartItems.forEach(
-      (item) => (subTotal += item.data.quantity * item.data.itemPrice)
+      (item) =>
+        (subTotal +=
+          item.data.quantity *
+          Math.floor(
+            (item.data.itemPrice * (1 - item.data.itemDiscount) * 100) / 100
+          ))
     );
     return subTotal;
   };

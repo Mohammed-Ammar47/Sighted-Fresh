@@ -164,7 +164,7 @@ export default function Store() {
     <>
       <div className="flex flex-row h-screen">
         <aside
-          class={`  sm:relative top-32 sm:top-0 left-0 z-40 w-60 h-5/6 fixed transition-transform duration-300 ${
+          class={`  sm:relative top-32 sm:top-0 left-0 z-40 w-60 h-fit rounded-br-lg border-b-2 border-r-2 border-[#CE1212] absolute transition-transform duration-300 ${
             openSidebar ? "translate-x-0" : "-translate-x-full"
           }  sm:translate-x-0`}
           aria-label="Sidebar"
@@ -181,12 +181,12 @@ export default function Store() {
               }}
             />
           </button>
-          <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 ">
+          <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 rounded-lg">
             <div>
               <h3 className="mb-4 text-xl font-semibold text-gray-900 ">
                 Category
               </h3>
-              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
+              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y px-2 divide-slate-600  ">
                 {categories.map((category, index) => (
                   <li key={index} class="w-full   ">
                     <div class="flex items-center pl-1">

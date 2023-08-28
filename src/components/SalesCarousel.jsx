@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import Glide from "@glidejs/glide"
+import React, { useEffect } from "react";
+import Glide from "@glidejs/glide";
 
 export default function SalesCarousel() {
   useEffect(() => {
@@ -23,12 +23,12 @@ export default function SalesCarousel() {
           perView: 1,
         },
       },
-    }).mount()
+    }).mount();
 
     return () => {
-      slider.destroy()
-    }
-  }, [])
+      slider.destroy();
+    };
+  }, []);
 
   return (
     <>
@@ -39,15 +39,14 @@ export default function SalesCarousel() {
           <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
             <li>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/sighted-fresh.appspot.com/o/sale%20banners%2Fsale%20banner%2050%25.jpg?alt=media&token=776e679c-41b3-492f-a3b3-5c8d46b7d568"
-                className="m-auto max-h-full w-full max-w-full h-64  md:h-96  lg-h-[550px] "
+                src="https://firebasestorage.googleapis.com/v0/b/sighted-fresh.appspot.com/o/sale%20banners%2FBlack%20Yellow%20Bold%20Bag%20Fashion%20Sale%20Banner%20(1).png?alt=media&token=fee55168-acb3-4637-9198-4e039f7936fd"
+                className="m-auto max-h-full w-full max-w-full object-cover "
               />
             </li>
-            
           </ul>
-        </div> 
+        </div>
       </div>
       {/*<!-- End Carousel with controls outside --> */}
     </>
-  )
+  );
 }

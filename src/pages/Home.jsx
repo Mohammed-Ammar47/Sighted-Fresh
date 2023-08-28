@@ -12,11 +12,12 @@ import ProductCard from "../components/ProductCard";
 import Spinner from "../components/Spinner";
 import LogoCarousel from "../components/LogoCarousel";
 import SalesCarousel from "../components/SalesCarousel";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [latestProducts, setLatestProducts] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -55,11 +56,11 @@ export default function Home() {
           <div className="flex flex-row lg:pr-7">
             <button
               onClick={() => {
-                navigate("/");
+                navigate("/deals");
               }}
               className="w-full justify-center items-center  h-10 rounded-full text-base lg:text-lg font-semibold ml-5  mr-2 lg:ml-0 sm:pt-1 px-6 focus:outline-none focus:ring-2 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] focus:ring-white cursor-pointer"
             >
-              Home
+              Deals
             </button>
             <button
               onClick={() => {

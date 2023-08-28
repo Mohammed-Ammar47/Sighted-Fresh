@@ -222,7 +222,9 @@ export default function Deals() {
             <p className="text-xl font-semibold text-start px-2">
               Latest products
             </p>
-            <p className="text- font-normal text-start px-2">123</p>
+            <p className="text- font-normal text-start px-2">
+              {allProducts.length} items
+            </p>
           </div>
           <div>
             <div className="p-1 border-gray-200 ">

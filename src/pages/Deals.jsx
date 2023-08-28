@@ -8,7 +8,6 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { AdjustmentsVerticalIcon } from "@heroicons/react/24/outline";
 
 export default function Deals() {
-  // const [discountedProducts, setDiscountedProducts] = useState(null);
   const [openSidebar, setOpenSidebar] = useState(false);
   const [inputs, setInputs] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -141,7 +140,7 @@ export default function Deals() {
               }}
             />
           </button>
-          <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 ">
+          <div className=" px-3 py-4 overflow-y-auto bg-gray-50  border-r-2 border-b-2 border-r-[#E70000] border-b-[#E70000] rounded-br-lg ">
             <div>
               <h3 className="mb-4 text-xl font-semibold text-gray-900 ">
                 Category
@@ -220,7 +219,7 @@ export default function Deals() {
         <div className="sm:flex sm:flex-col">
           <div>
             <p className="text-xl font-semibold text-start px-2">
-              Latest products
+              Discounted products
             </p>
             <p className="text- font-normal text-start px-2">
               {allProducts.length} items

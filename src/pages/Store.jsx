@@ -160,9 +160,9 @@ export default function Store() {
   }
   return (
     <>
-      <div className="flex flex-row w-screen">
+      <div className="flex flex-row ">
         <aside
-          class={`  md:relative top-32 sm:top-0 left-0 z-40 w-60  absolute transition-transform duration-300 ${
+          class={`  md:relative top-32 sm:top-0 left-0 z-40 w-60 absolute transition-transform duration-300 ${
             openSidebar ? "translate-x-0" : "-translate-x-full"
           }  md:translate-x-0`}
           aria-label="Sidebar"
@@ -179,12 +179,12 @@ export default function Store() {
               }}
             />
           </button>
-          <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 ">
+          <div className=" px-3 py-4 overflow-y-auto bg-gray-50 border-2 border-r-[#E70000] border-b-[#E70000] rounded-br-lg  ">
             <div>
               <h3 className="mb-4 text-xl font-semibold text-gray-900 ">
                 Category
               </h3>
-              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
+              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y rounded-br-lg px-2 divide-slate-600 rounded-lg ">
                 {categories.map((category, index) => (
                   <li key={index} class="w-full   ">
                     <div class="flex items-center pl-1">
@@ -257,7 +257,7 @@ export default function Store() {
         </aside>
         <div className="sm:flex  sm:flex-col">
           <form onSubmit={onSubmit}>
-            <div className="flex justify-center items-center p-5 bg-white rounded-b-xl">
+            <div className="flex justify-center items-center py-3 px-10 bg-white rounded-b-xl">
               <div className="relative w-full">
                 <input
                   name="searchInput"

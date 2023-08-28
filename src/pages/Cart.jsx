@@ -74,18 +74,24 @@ export default function Cart() {
       </h2>
       <section className="flex flex-col md:flex-row  mx-4 lg:space-x-3 ">
         <div className="w-full flex flex-row  justify-center items-center border bg-white my-3 lg:mx-auto rounded-lg shadow-lg max-w-xl lg:max-w-4xl divide-y divide-slate-100">
-          <ul className="w-full divide-y divide-slate-700 px-2">
-            {CartItems.map((item) => (
-              <CartItem
-                key={item.id}
-                id={item.id}
-                item={item.data}
-                onDelete={() => {
-                  onDelete(item.id);
-                }}
-              />
-            ))}
-          </ul>
+          {CartItems.length === 0 ? (
+            <p className="text-xl font-semibold p-3">
+              There are no items in the cart
+            </p>
+          ) : (
+            <ul className="w-full divide-y divide-slate-700 px-2">
+              {CartItems.map((item) => (
+                <CartItem
+                  key={item.id}
+                  id={item.id}
+                  item={item.data}
+                  onDelete={() => {
+                    onDelete(item.id);
+                  }}
+                />
+              ))}
+            </ul>
+          )}
         </div>
         <div className="my-3 md:mt-6  md:my-5   h-full rounded-lg border bg-white p-6 shadow-md  md:w-1/3">
           <div className="mb-2 flex justify-between text-lg">

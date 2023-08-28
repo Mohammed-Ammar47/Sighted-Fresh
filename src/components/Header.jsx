@@ -26,7 +26,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex justify-between  items-center py-2 px-7 bg-[#F1F1F1]">
+      <header className="flex justify-between  items-center py-2 px-5 bg-[#F1F1F1]">
         <img
           className="flex  h-7 md:h-10"
           src="https://api.logo.com/api/v2/images?logo=logo_31050228-a10f-4014-9f77-8779b7a20f5f&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691277569"

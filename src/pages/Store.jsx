@@ -1,4 +1,11 @@
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import {
+  and,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import React, { useEffect, useState, Fragment } from "react";
 import { db } from "../Firebase";
 import Spinner from "../components/Spinner";
@@ -153,16 +160,16 @@ export default function Store() {
   }
   return (
     <>
-      <div className="flex flex-row h-screen">
+      <div className="flex flex-row w-screen">
         <aside
-          class={`  sm:relative top-32 sm:top-0 left-0 z-40 w-60 h-fit rounded-br-lg border-b-2 border-r-2 border-[#CE1212] absolute transition-transform duration-300 ${
+          class={`  md:relative top-32 sm:top-0 left-0 z-40 w-60  absolute transition-transform duration-300 ${
             openSidebar ? "translate-x-0" : "-translate-x-full"
-          }  sm:translate-x-0`}
+          }  md:translate-x-0`}
           aria-label="Sidebar"
         >
           <button
             type="button"
-            className="-right-11 absolute items-center p-2 mt-2 ml-3 text-sm bg-white ring-2 ring-red-600 -z-10 border-gray-50 text-gray-500 rounded-tr-lg rounded-br-lg sm:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-600"
+            className="-right-11 absolute items-center p-2 mt-2 ml-3 text-sm bg-white ring-2 ring-red-600 -z-10 border-gray-50 text-gray-500 rounded-tr-lg rounded-br-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-600"
           >
             <span className="sr-only">Open sidebar</span>
             <AdjustmentsVerticalIcon
@@ -172,12 +179,12 @@ export default function Store() {
               }}
             />
           </button>
-          <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 rounded-lg">
+          <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 ">
             <div>
               <h3 className="mb-4 text-xl font-semibold text-gray-900 ">
                 Category
               </h3>
-              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y px-2 divide-slate-600  ">
+              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
                 {categories.map((category, index) => (
                   <li key={index} class="w-full   ">
                     <div class="flex items-center pl-1">
@@ -251,7 +258,7 @@ export default function Store() {
         <div className="sm:flex  sm:flex-col">
           <form onSubmit={onSubmit}>
             <div className="flex justify-center items-center p-5 bg-white rounded-b-xl">
-              <div className="relative w-96">
+              <div className="relative w-full">
                 <input
                   name="searchInput"
                   type="search"
@@ -270,10 +277,10 @@ export default function Store() {
               </div>
             </div>
           </form>
-          <div className="p-1  ">
+          <div>
             <div className="p-1 border-gray-200 ">
-              <div className="">
-                <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 ">
+              <div>
+                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
                   {allProducts.map((product) => (
                     <ProductCard
                       key={product.id}

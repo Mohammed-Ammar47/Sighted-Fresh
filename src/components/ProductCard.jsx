@@ -5,7 +5,7 @@ export default function ProductCard({ product, id }) {
   const navigate = useNavigate();
   return (
     <>
-      <li className="">
+      <li>
         <div className="bg-white flex flex-col  justify-between items-center shadow-md hover:shadow-xl rounded-lg overflow-hidden transition-shadow mx-1 mb-3 md:mx-2   duration-200 ease-in-out ">
           <div
             onClick={() => {

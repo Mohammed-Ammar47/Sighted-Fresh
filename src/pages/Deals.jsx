@@ -122,16 +122,16 @@ export default function Deals() {
   }
   return (
     <>
-      <div className="flex flex-row ">
+      <div className="flex flex-row p-1">
         <aside
-          class={`  md:relative top-32 sm:top-0 left-0 z-40 w-60  absolute transition-transform duration-300 ${
+          class={`  md:relative top-12 sm:-top-1 left-0 z-40 w-60  absolute transition-transform duration-300 ${
             openSidebar ? "translate-x-0" : "-translate-x-full"
           }  md:translate-x-0`}
           aria-label="Sidebar"
         >
           <button
             type="button"
-            className="-right-11 absolute items-center p-2 mt-2 ml-3 text-sm bg-white ring-2 ring-red-600 -z-10 border-gray-50 text-gray-500 rounded-tr-lg rounded-br-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-600"
+            className="-right-11 top-16 absolute items-center p-2 mt-2 ml-3 text-sm bg-white ring-2 ring-red-600 -z-10 border-gray-50 text-gray-500 rounded-tr-lg rounded-br-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-600"
           >
             <span className="sr-only">Open sidebar</span>
             <AdjustmentsVerticalIcon
@@ -218,6 +218,12 @@ export default function Deals() {
           </div>
         </aside>
         <div className="sm:flex sm:flex-col">
+          <div>
+            <p className="text-xl font-semibold text-start px-2">
+              Latest products
+            </p>
+            <p className="text- font-normal text-start px-2">123</p>
+          </div>
           <div>
             <div className="p-1 border-gray-200 ">
               <div>

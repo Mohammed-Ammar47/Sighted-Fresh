@@ -6,18 +6,18 @@ export default function ProductCard({ product, id }) {
   return (
     <>
       <li>
-        <div className="bg-white flex flex-col  justify-between items-center shadow-md hover:shadow-xl rounded-lg overflow-hidden transition-shadow mx-1 mb-3 md:mx-2   duration-200 ease-in-out ">
+        <div className="bg-white flex flex-col relative justify-between items-center shadow-md hover:shadow-xl rounded-lg overflow-hidden transition-shadow mx-1 mb-3 md:mx-2   duration-200 ease-in-out ">
+          {product.discountRate > 0 && (
+            <div class="text-xs absolute top-3 -left-9 -rotate-45 font-bold  py-0.5 px-12 uppercase rounded text-white bg-[#CE1212]  last:mr-0 mr-1">
+              -{product.discountRate * 100} %
+            </div>
+          )}
           <div
             onClick={() => {
               navigate(`/store/category/${product.type}/${id}`);
             }}
-            className="h-48 md:h-64 rounded-t-lg relative hover:border-x-2 hover:border-t-2 hover:border-red-600 md:w-full "
+            className="h-48 md:h-64 rounded-t-lg  hover:border-x-2 hover:border-t-2 hover:border-red-600 md:w-full "
           >
-            {product.discountRate > 0 && (
-              <div class="text-xs absolute top-3 -left-9 -rotate-45 font-bold  py-0.5 px-12 uppercase rounded text-white bg-[#CE1212]  last:mr-0 mr-1">
-                -{product.discountRate * 100} %
-              </div>
-            )}
             <img
               className=" rounded-t-md inset-0 w-full h-full object-cover md:object-cover"
               src={product.image[0]}

@@ -1,46 +1,23 @@
-import React, { useEffect } from "react";
-import Glide from "@glidejs/glide";
+import React from "react";
 
 export default function SalesCarousel() {
-  useEffect(() => {
-    const slider = new Glide(".glide-04", {
-      type: "carousel",
-      focusAt: "center",
-      perView: 1,
-      autoplay: 3500,
-      animationDuration: 700,
-      gap: 12,
-      classNames: {
-        nav: {
-          active: "[&>*]:bg-wuiSlate-700",
-        },
-      },
-      breakpoints: {
-        1024: {
-          perView: 1,
-        },
-        640: {
-          perView: 1,
-        },
-      },
-    }).mount();
-
-    return () => {
-      slider.destroy();
-    };
-  }, []);
-
   return (
     <>
       {/*<!-- Component: Carousel with controls outside --> */}
-      <div className="glide-04 relative w-full ">
+      <div className=" basis-3/5 ">
         {/*    <!-- Slides --> */}
-        <div className="overflow-hidden" data-glide-el="track">
-          <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
+        <div>
+          <ul className="flex flex-row justify-between space-x-4 p-0">
             <li>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/sighted-fresh.appspot.com/o/sale%20banners%2FBlack%20Yellow%20Bold%20Bag%20Fashion%20Sale%20Banner%20(1).png?alt=media&token=fee55168-acb3-4637-9198-4e039f7936fd"
-                className="m-auto max-h-full w-full max-w-full object-cover "
+                src="https://firebasestorage.googleapis.com/v0/b/sighted-fresh.appspot.com/o/sale%20banners%2FSale%20banner%2040%25%20design%20(1).png?alt=media&token=08c3080f-df85-44eb-896e-5472189de6ac"
+                className="m-auto rounded-2xl   object-cover "
+              />
+            </li>
+            <li>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/sighted-fresh.appspot.com/o/sale%20banners%2FSale%20banner%2050%25%20design.png?alt=media&token=026e02af-1fe2-4ddd-ad0e-f1105c227a48"
+                className="m-auto rounded-2xl   object-cover "
               />
             </li>
           </ul>

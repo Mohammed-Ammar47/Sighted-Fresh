@@ -6,9 +6,9 @@ export default function ProductCard({ product, id }) {
   return (
     <>
       <li>
-        <div className="bg-white flex flex-col relative justify-between items-center shadow-md hover:shadow-xl rounded-lg overflow-hidden transition-shadow mx-1 mb-3 md:mx-2   duration-200 ease-in-out ">
+        <div className="bg-white flex flex-col relative justify-between items-center shadow-md hover:shadow-xl rounded-lg overflow-hidden transition-shadow  duration-200 ease-in-out mx-2 my-2 ">
           {product.discountRate > 0 && (
-            <div class="text-xs absolute top-3 -left-9 -rotate-45 font-bold  py-0.5 px-12 uppercase rounded text-white bg-[#CE1212]  last:mr-0 mr-1">
+            <div class="text-base font-family-Roboto  absolute top-3 -left-9 -rotate-45 font-bold  py-0.5 px-12 uppercase rounded text-white bg-[#CE1212]  last:mr-0 mr-1">
               -{product.discountRate * 100} %
             </div>
           )}
@@ -23,24 +23,27 @@ export default function ProductCard({ product, id }) {
               src={product.image[0]}
             />
           </div>
-          <div className="w-full justify-center items-center  border-2 border-red-600 rounded-b-lg font-semibold">
-            <p className="px-3 py-1 truncate">{product.name}</p>
-            <p className="px-3 py-1">
+          <div className="w-full justify-center items-center text-custom-black border-2 border-red-600 rounded-b-lg text-lg">
+            <p className="px-3 font-semibold font-family-Convergence pb-2 pt-3   truncate  ">
+              {product.name}
+            </p>
+            <p className="px-3 font-normal font-family-Roboto">
               Available in{" "}
               {product.colors.length > 1
                 ? `${product.colors.length} colors`
                 : "one color"}{" "}
             </p>
-            <div className="flex flex-row">
+            <div className="flex flex-row pb-3">
               {product.discountRate === 0 ? (
-                <p className="px-3  py-1">${product.regularPrice}</p>
+                <p className="px-3 font-family-Roboto font-medium">
+                  ${product.regularPrice}
+                </p>
               ) : (
                 <>
-                  <p className="px-3 line-through py-1">
+                  <p className="px-3 line-through font-family-Roboto font-medium">
                     ${product.regularPrice}
                   </p>
-                  <p className=" py-1">
-                    {" "}
+                  <p className=" font-family-Roboto font-medium">
                     $
                     {Math.floor(
                       (product.regularPrice *
@@ -53,9 +56,9 @@ export default function ProductCard({ product, id }) {
               )}
             </div>
 
-            <button className="w-full justify-center items-center  flex-col bg-red-600 text-white px-7 py-2 text-sm md:text-lg font-medium uppercase  shadow-md hover:bg-red-700  transition duration-200 ease-in-out active:bg-red-800">
+            {/* <button className="w-full justify-center items-center  flex-col bg-red-600 text-white px-7 py-2 text-sm md:text-lg font-medium uppercase  shadow-md hover:bg-red-700  transition duration-200 ease-in-out active:bg-red-800">
               Add to Cart
-            </button>
+            </button> */}
           </div>
         </div>
       </li>

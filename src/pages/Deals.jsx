@@ -121,16 +121,16 @@ export default function Deals() {
   }
   return (
     <>
-      <div className="flex flex-row p-1">
+      <div className="flex flex-row ">
         <aside
-          class={`  md:relative top-12 sm:-top-1 left-0 z-40 w-60  absolute transition-transform duration-300 ${
+          class={`  md:relative top-32 sm:top-0 left-0 z-40 w-60 absolute transition-transform duration-300 ${
             openSidebar ? "translate-x-0" : "-translate-x-full"
           }  md:translate-x-0`}
           aria-label="Sidebar"
         >
           <button
             type="button"
-            className="-right-11 top-16 absolute items-center p-2 mt-2 ml-3 text-sm bg-white ring-2 ring-red-600 -z-10 border-gray-50 text-gray-500 rounded-tr-lg rounded-br-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-600"
+            className="-right-11 absolute items-center p-2 mt-2 ml-3 text-sm bg-white ring-2 ring-red-600 -z-10 border-gray-50 text-gray-500 rounded-tr-lg rounded-br-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-600"
           >
             <span className="sr-only">Open sidebar</span>
             <AdjustmentsVerticalIcon
@@ -140,12 +140,12 @@ export default function Deals() {
               }}
             />
           </button>
-          <div className=" px-3 py-4 overflow-y-auto bg-gray-50  border-r-2 border-b-2 border-r-[#E70000] border-b-[#E70000] rounded-br-lg ">
+          <div className=" px-3  overflow-y-auto bg-gray-50 border-2 border-r-[#E70000] border-b-[#E70000] rounded-br-lg  ">
             <div>
-              <h3 className="mb-4 text-xl font-semibold text-gray-900 ">
+              <h3 className="mb-2 text-lg font-semibold text-custom-black pt-4 ">
                 Category
               </h3>
-              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
+              <ul className="w-full md:w-48 text-base font-family-Roboto font-normal text-custom-black bg-white border border-gray-400 divide-y rounded-br-lg px-2 divide-slate-600 rounded-lg ">
                 {categories.map((category, index) => (
                   <li key={index} class="w-full   ">
                     <div class="flex items-center pl-1">
@@ -157,7 +157,7 @@ export default function Deals() {
                         name="category"
                         class="w-5 h-5 accent-inherit bg-current text-red-600 checked:bg-red-600 checked:text-red-600 border-gray-300 rounded focus:ring-red-50 focus:ring-2 "
                       />
-                      <label class="w-full py-3 ml-2 text-sm font-medium text-gray-900 ">
+                      <label class="w-full py-2 ml-2 ">
                         {category.displayName}
                       </label>
                     </div>
@@ -165,11 +165,11 @@ export default function Deals() {
                 ))}
               </ul>{" "}
             </div>
-            <div>
-              <h3 className="my-2 text-xl font-semibold text-gray-900 ">
+            <div className="py-2">
+              <h3 className="mb-2 text-lg font-semibold text-custom-black  ">
                 Price
               </h3>
-              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
+              <ul className="w-full md:w-48 text-base font-family-Roboto font-normal text-custom-black bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
                 {priceRanges.map((priceRange, index) => (
                   <li key={index} class="w-full   ">
                     <div class="flex items-center pl-1">
@@ -181,7 +181,7 @@ export default function Deals() {
                         name="priceRange"
                         class="w-5 h-5 accent-inherit bg-current text-red-600 checked:bg-red-600 checked:text-red-600 border-gray-300 rounded focus:ring-red-50 focus:ring-2 "
                       />
-                      <label class="w-full py-3 ml-2 text-sm font-medium text-gray-900 ">
+                      <label class="w-full py-3 ml-2  ">
                         ${priceRange.price.min} to ${priceRange.price.max}
                       </label>
                     </div>
@@ -189,11 +189,11 @@ export default function Deals() {
                 ))}
               </ul>
             </div>
-            <div>
-              <h3 className="my-2 text-xl font-semibold text-gray-900 ">
+            <div className="pb-4">
+              <h3 className=" text-lg font-semibold text-custom-black">
                 Sort by
               </h3>
-              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
+              <ul className="w-full md:w-48 text-base font-family-Roboto font-normal text-custom-black bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
                 {sortByOptions.map((option, index) => (
                   <li key={index} class="w-full   ">
                     <div class="flex items-center pl-1">
@@ -206,7 +206,7 @@ export default function Deals() {
                         // checked={option.optionId === sortBy}
                         className="w-5 h-5 accent-inherit bg-current text-red-600 checked:bg-red-600 checked:text-red-600 border-gray-300 rounded focus:ring-red-50 focus:ring-2 "
                       />
-                      <label class="w-full py-3 ml-2 text-sm font-medium text-gray-900 ">
+                      <label class="w-full py-3 ml-2 ">
                         {option.displayName}
                       </label>
                     </div>
@@ -216,17 +216,17 @@ export default function Deals() {
             </div>
           </div>
         </aside>
-        <div className="sm:flex sm:flex-col">
+        <div className="sm:flex sm:flex-col mx-2 my-4 text-custom-black">
           <div>
-            <p className="text-xl font-semibold text-start px-2">
+            <p className="text-[28px]  font-family-Montserrat font-semibold text-start mx-2  ">
               Discounted products
             </p>
-            <p className="text- font-normal text-start px-2">
+            <p className="text-lg font-normal text-custom-black font-family-Roboto text-start mx-2">
               {allProducts.length} items
             </p>
           </div>
           <div>
-            <div className="p-1 border-gray-200 ">
+            <div className=" border-gray-200 ">
               <div>
                 <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
                   {allProducts.map((product) => (

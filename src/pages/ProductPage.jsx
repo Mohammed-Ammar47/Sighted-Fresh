@@ -77,29 +77,32 @@ export default function ProductPage() {
   return (
     <>
       <section className="flex justify-center items-center">
-        <div className="flex flex-col lg:flex-row mx-3  my-7 p-2 rounded-lg  justify-center border-2 border-red-600 items-center lg:w-[800px] bg-white">
-          <div className="basis-1/3 lg:relative flex flex-col lg:w-80 lg:h-[27rem]  overflow-hidden rounded-lg lg:block ">
+        <div className="flex flex-col lg:flex-row sm:mx-32  my-7  rounded-lg px-8  justify-center border-2 border-red-600 items-center w-full bg-white">
+          <div className="basis-1/3 lg:relative flex flex-col lg:w-80 lg:h-[27rem] shadow-2xl overflow-hidden rounded-lg lg:block ">
             <img
               className=" lg:absolute  inset-0 w-full h-full object-contain"
               src={productImage == null ? product.image[0] : productImage}
             />
           </div>
-          <div className="basis-2/3 px-1 py-1">
+          <div className="basis-2/3 lg:relative p-8 ">
             {/* Product Form */}
-
-            <form onSubmit={onSubmit} className="w-full py-1 px-3">
+            <form onSubmit={onSubmit} className="w-full h-full">
               <div>
-                <h1 className="text-xl font-semibold py-1">{product.name}</h1>
+                <h1 className="text-[28px] font-semibold text-custom-black font-family-Convergence pb-2">
+                  {product.name}
+                </h1>
               </div>
-              <div className="flex flex-row text-xl font-semibold">
+              <div className="flex flex-row text-lg font-medium pb-2">
                 {product.discountRate === 0 ? (
-                  <p className="pr-2  py-1">${product.regularPrice}</p>
+                  <p className="pr-2  font-family-Roboto text-custom-black">
+                    ${product.regularPrice}
+                  </p>
                 ) : (
                   <>
-                    <p className="pr-2 line-through py-1">
+                    <p className="pr-2 line-through font-family-Roboto text-custom-black">
                       ${product.regularPrice}
                     </p>
-                    <p className=" py-1">
+                    <p className=" font-family-Roboto text-custom-black">
                       {" "}
                       $
                       {Math.floor(
@@ -112,11 +115,12 @@ export default function ProductPage() {
                   </>
                 )}
               </div>
-
               {/* Colors */}
               <div>
-                <p className="text-xl font-semibold py-2">Colors</p>
-                <div className="flex space-x-3 text-xl">
+                <p className="text-lg font-semibold text-custom-black font-family-roboto pb-2">
+                  Colors
+                </p>
+                <div className="flex space-x-3 text-lg pb-2">
                   {product.colors.map((color, index) => (
                     <label key={index}>
                       <input
@@ -140,8 +144,10 @@ export default function ProductPage() {
               </div>
               {/* Sizes */}
               <div>
-                <p className="text-xl font-semibold py-2">Sizes</p>
-                <div className="flex space-x-3 text-lg lg:text-xl">
+                <p className="text-lg font-semibold text-custom-black font-family-roboto pb-2">
+                  Sizes
+                </p>
+                <div className="flex space-x-3 text-lg lg:text-lg pb-2">
                   {product.sizes.map((size, index) => (
                     <label key={index}>
                       <input
@@ -152,7 +158,7 @@ export default function ProductPage() {
                         value={size}
                         required
                       />
-                      <div className="w-6 h-6 lg:w-9 lg:h-9 rounded-lg flex items-center uppercase justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-red-600 peer-checked:text-white cursor-pointer">
+                      <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-lg flex items-center uppercase justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-red-600 peer-checked:text-white cursor-pointer">
                         {size}
                       </div>
                     </label>
@@ -161,23 +167,23 @@ export default function ProductPage() {
               </div>
               {/* Number of units */}
               <div>
-                <label className="w-full text-xl lg:text-2xl font-semibold py-2">
+                <label className="text-lg font-semibold text-custom-black font-family-roboto pb-2">
                   Quantity
                 </label>
-                <div className="flex flex-row h-10 rounded-lg my-3 w-28 lg:w-36 bg-transparent mt-1">
+                <div className="flex flex-row h-8 rounded-lg  w-28 lg:w-32 bg-transparent mb-2">
                   <button
                     type="button"
                     onClick={() => {
                       setQuantity(quantity == 0 ? quantity : quantity - 1);
                     }}
-                    className=" bg-red-600 text-white  hover:bg-red-700 font-semibold h-full w-20 rounded-l cursor-pointer outline-none"
+                    className=" bg-[#E70000] text-white  hover:bg-[#C50000] font-semibold h-full w-12 rounded-l cursor-pointer outline-none"
                   >
-                    <span className="m-auto text-2xl font-thin">−</span>
+                    <span className="m-auto text-lg font-normal">−</span>
                   </button>
                   <input
                     type="number"
                     onChange={handleChange}
-                    className="outline-none focus:outline-none border-2 border-red-600 text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  "
+                    className="outline-none focus:outline-none border-2 border-red-600 text-center w-full bg-white font-semibold text-lg hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700 appearance-none "
                     name="unitCount"
                     value={quantity}
                   />
@@ -187,17 +193,17 @@ export default function ProductPage() {
                     onClick={() => {
                       setQuantity(quantity + 1);
                     }}
-                    className=" bg-red-600 text-white  hover:bg-red-700 font-semibold h-full w-20 rounded-r cursor-pointer"
+                    className=" bg-[#E70000] text-white  hover:bg-[#C50000] font-semibold h-full w-12 rounded-r cursor-pointer outline-none"
                   >
-                    <span className="m-auto text-2xl font-thin">+</span>
+                    <span className="m-auto text-lg font-normal">+</span>
                   </button>
                 </div>
               </div>
               <button
-                className="w-full justify-center items-center  flex-col bg-red-600 text-white px-7 py-3 text-sm md:text-xl font-medium uppercase rounded shadow-md hover:bg-red-700 transition duration-200 ease-in-out active:bg-red-800"
+                className=" justify-center items-center px-2.5  flex-col bg-[#E70000] text-white  text-sm md:text-lg font-medium  rounded shadow-md hover:bg-[#C50000] transition duration-200 ease-in-out active:bg-red-800 font-family-Roboto"
                 type="submit"
               >
-                add to cart
+                Add to Cart
               </button>
             </form>
           </div>

@@ -68,18 +68,17 @@ export default function Cart() {
   }
   return (
     <>
-      <h2 className=" flex text-3xl font-semibold justify-center text-center border bg-white mt-2 lg:mx-auto rounded-lg mx-4 md:w-56 py-2 ">
-        {" "}
+      <h2 className=" flex justify-center text-[28px] text-custom-black font-family-Montserrat font-semibold my-4 ">
         Shopping Cart
       </h2>
-      <section className="flex flex-col md:flex-row  mx-4 lg:space-x-3 ">
-        <div className="w-full flex flex-row  justify-center items-center border bg-white my-3 lg:mx-auto rounded-lg shadow-lg max-w-xl lg:max-w-4xl divide-y divide-slate-100">
+      <section className="flex flex-col sm:flex-row  sm:mx-32 lg:space-x-3 ">
+        <div className="w-full flex flex-row  justify-center items-center border bg-white  lg:mx-auto rounded-lg shadow-lg max-w-xl lg:max-w-4xl divide-y divide-slate-100">
           {CartItems.length === 0 ? (
             <p className="text-xl font-semibold p-3">
               There are no items in the cart
             </p>
           ) : (
-            <ul className="w-full divide-y divide-slate-700 px-2">
+            <ul className="w-full divide-y divide-slate-700 p-2">
               {CartItems.map((item) => (
                 <CartItem
                   key={item.id}
@@ -93,29 +92,27 @@ export default function Cart() {
             </ul>
           )}
         </div>
-        <div className="my-3 md:mt-6  md:my-5   h-full rounded-lg border bg-white p-6 shadow-md  md:w-1/3">
-          <div className="mb-2 flex justify-between text-lg">
-            <p className="text-gray-800">Subtotal</p>
-            <p className="text-gray-800">${sum()}</p>
+        <div className="my-3 md:mt-6  md:my-5 h-full rounded-lg border bg-white p-4 shadow-md font-family-Roboto text-lg text-custom-black md:w-1/3">
+          <div className="mb-2 flex justify-between">
+            <p>Subtotal</p>
+            <p>${sum()}</p>
           </div>
-          <div className="flex justify-between text-lg">
-            <p className="text-gray-800">Shipping</p>
-            <p className="text-gray-800">${ShippingCost}</p>
+          <div className="flex justify-between ">
+            <p>Shipping</p>
+            <p>${ShippingCost}</p>
           </div>
-          <hr className="my-4" />
+          <hr className="my-2" />
           <div className="flex justify-between">
-            <p className="text-xl font-bold">Total</p>
-            <div className="">
-              <p className="mb-1 text-xl font-bold">
-                ${sum() + ShippingCost} USD
-              </p>
-              <p className="text-sm text-gray-800">including VAT</p>
+            <p className="font-semibold">Total</p>
+            <div>
+              <p className="mb-2 font-semibold">${sum() + ShippingCost} USD</p>
+              <p className="text-sm contrast-75 ">including VAT</p>
             </div>
           </div>
-          <button className="mt-6 uppercase w-full rounded-md bg-red-600 py-1.5 font-medium text-blue-50 hover:bg-red-700 transition duration-200 ease-in-out active:bg-red-800">
-            Check out
+          <button className="my-2 w-full rounded-md bg-[#E70000] py-1.5 font-medium text-white hover:bg-[#C50000] transition duration-200 ease-in-out active:bg-red-800">
+            Check Out
           </button>
-        </div>{" "}
+        </div>
       </section>
     </>
   );

@@ -23,7 +23,7 @@ export default function Home() {
     async function fetchProducts() {
       try {
         const productsRef = collection(db, "products");
-        const q = query(productsRef, orderBy("timestamp", "desc"), limit(6));
+        const q = query(productsRef, orderBy("timestamp", "desc"), limit(4));
         const querySnapshot = await getDocs(q);
         const products = [];
         querySnapshot.forEach((doc) => {
@@ -45,55 +45,68 @@ export default function Home() {
   }
   return (
     <>
-      <div className="bg-[#D8D9DA] flex  flex-col md:flex-row  w-full h-full mb-5">
-        <div className="md:basis-2/5 text-xl lg:text-3xl text-white font-bold justify-center text-center md:text-left lg:text-justify pt-10 px-7 xl:pt-28 lg:pt-20 lg:pl-16 ">
-          <p>
+      {/* Section 1 */}
+      <div
+        className={`bg-[url(https://firebasestorage.googleapis.com/v0/b/sighted-fresh.appspot.com/o/david-lezcano-NfZiOJzZgcg-unsplash.jpg?alt=media&token=1b0ef250-db26-4c06-8a6d-451143989ce5)] flex items-center bg-cover  w-full h-screen px-32 ring-2 ring-red-600`}
+      >
+        <div
+          className={`content-center text-white  text-center md:text-left lg:text-justify`}
+        >
+          <p className="text-4xl font-bold pb-4 font-family-Montserrat">
             Don't stress about the dress, <br /> We'll dress you to impress.
           </p>
-          <p className="text-base font-normal pb-3">
+          <p className="text-xl leading-10 font-medium pb-4 font-family-Convergence">
             Shop and find the perfect fit for you
           </p>
-          <div className="flex flex-row lg:pr-7">
-            <button
-              onClick={() => {
-                navigate("/deals");
-              }}
-              className="w-full justify-center items-center  h-10 rounded-full text-base lg:text-lg font-semibold ml-5  mr-2 lg:ml-0 sm:pt-1 px-6 focus:outline-none focus:ring-2 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] focus:ring-white cursor-pointer"
-            >
-              Deals
-            </button>
+          <div className="flex flex-row space-x-4">
             <button
               onClick={() => {
                 navigate("/store");
               }}
-              className="w-full justify-center items-center  h-10 rounded-full text-base lg:text-lg font-semibold mr-5 ml-2 lg:mr-0  sm:pt-1 px-6 focus:outline-none focus:ring-2 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] focus:ring-white cursor-pointer"
+              className=" justify-center items-center rounded-full text-base lg:text-lg font-medium font-family-Roboto px-2.5 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] cursor-pointer"
             >
-              Store
+              Start Shopping
             </button>
           </div>
         </div>
-        <div className="flex flex-row mt-3  md:basis-3/5 ">
-          <img
-            className="w-full  py-2"
-            src="https://firebasestorage.googleapis.com/v0/b/sighted-fresh.appspot.com/o/SF1.png?alt=media&token=571d127e-f703-4d85-952b-8959642ec802"
-          />
+      </div>
+      {/* Section 2 */}
+      <div className="w-auto mx-32 my-24">
+        <div className=" flex flex-col justify-center  p-8 rounded-2xl bg-[#F1F1F1]">
+          <h2 className="text-center flex flex-col font-semibold text-lg sm:text-4xl font-family-Montserrat">
+            Our Products
+          </h2>
+
+          <LogoCarousel />
         </div>
       </div>
-      <h2 className="text-center flex flex-col font-semibold text-lg lg:text-3xl">
-        Our products
-      </h2>
-      <div className="px-2 py-6 my-4 mx-7 rounded-2xl bg-[#F1F1F1]">
-        <LogoCarousel />
-      </div>
-      <div className="my-5">
+
+      <div className="mx-32 my-24 bg-[#F1F1F1] rounded-2xl flex p-8">
+        <div className="flex flex-col basis-2/5 ">
+          <div>
+            <p className="text-[28px] font-semibold font-family-Montserrat">
+              Take this opportunity,
+              <br />
+              Check our latest special offers and discounts
+            </p>
+            <button
+              onClick={() => {
+                navigate("/deals");
+              }}
+              className="my-4 w-auto justify-center items-center rounded-full text-base lg:text-lg font-medium font-family-Roboto px-2.5 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] cursor-pointer"
+            >
+              Go to Deals
+            </button>
+          </div>
+        </div>
         <SalesCarousel />
       </div>
 
       {/* Latest products */}
 
-      <div className="md:mx-12">
-        <div className="flex flex-row justify-between text-xl font-semibold">
-          <p>Latest products</p>
+      <div className="sm:mx-32">
+        <div className="flex flex-row justify-between text-[28px] font-semibold font-family-Montserrat border-b-2 pb-2 border-[#E70000]">
+          <p className="text-custom-black">Latest products</p>
           <p className="text-red-600 ">
             <Link
               to={"/store"}
@@ -103,7 +116,7 @@ export default function Home() {
             </Link>
           </p>
         </div>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6  mt-5 mb-5 mx-1 ">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 space-x-4 my-4">
           {latestProducts.map((product) => (
             <ProductCard
               key={product.id}

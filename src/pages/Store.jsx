@@ -43,12 +43,12 @@ export default function Store() {
   const sortByOptions = [
     {
       optionId: 0,
-      displayName: "Name (Oldest-Newest)",
+      displayName: "Oldest-Newest",
       optionName: "timestamp",
     },
     {
       optionId: 1,
-      displayName: "Name (Newest-Oldest)",
+      displayName: "Newest-Oldest",
       optionName: "timestamp",
     },
     { optionId: 2, displayName: "Name (A-Z)", optionName: "name" },
@@ -179,12 +179,12 @@ export default function Store() {
               }}
             />
           </button>
-          <div className=" px-3 py-4 overflow-y-auto bg-gray-50 border-2 border-r-[#E70000] border-b-[#E70000] rounded-br-lg  ">
+          <div className=" px-3  overflow-y-auto bg-gray-50 border-2 border-r-[#E70000] border-b-[#E70000] rounded-br-lg  ">
             <div>
-              <h3 className="mb-4 text-xl font-semibold text-gray-900 ">
+              <h3 className="mb-2 text-lg font-semibold text-custom-black pt-4 ">
                 Category
               </h3>
-              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y rounded-br-lg px-2 divide-slate-600 rounded-lg ">
+              <ul className="w-full md:w-48 text-base font-family-Roboto font-normal text-custom-black bg-white border border-gray-400 divide-y rounded-br-lg px-2 divide-slate-600 rounded-lg ">
                 {categories.map((category, index) => (
                   <li key={index} class="w-full   ">
                     <div class="flex items-center pl-1">
@@ -196,7 +196,7 @@ export default function Store() {
                         name="category"
                         class="w-5 h-5 accent-inherit bg-current text-red-600 checked:bg-red-600 checked:text-red-600 border-gray-300 rounded focus:ring-red-50 focus:ring-2 "
                       />
-                      <label class="w-full py-3 ml-2 text-sm font-medium text-gray-900 ">
+                      <label class="w-full py-2 ml-2 ">
                         {category.displayName}
                       </label>
                     </div>
@@ -204,11 +204,11 @@ export default function Store() {
                 ))}
               </ul>{" "}
             </div>
-            <div>
-              <h3 className="my-2 text-xl font-semibold text-gray-900 ">
+            <div className="py-2">
+              <h3 className="mb-2 text-lg font-semibold text-custom-black  ">
                 Price
               </h3>
-              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
+              <ul className="w-full md:w-48 text-base font-family-Roboto font-normal text-custom-black bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
                 {priceRanges.map((priceRange, index) => (
                   <li key={index} class="w-full   ">
                     <div class="flex items-center pl-1">
@@ -220,7 +220,7 @@ export default function Store() {
                         name="priceRange"
                         class="w-5 h-5 accent-inherit bg-current text-red-600 checked:bg-red-600 checked:text-red-600 border-gray-300 rounded focus:ring-red-50 focus:ring-2 "
                       />
-                      <label class="w-full py-3 ml-2 text-sm font-medium text-gray-900 ">
+                      <label class="w-full py-3 ml-2  ">
                         ${priceRange.price.min} to ${priceRange.price.max}
                       </label>
                     </div>
@@ -228,11 +228,11 @@ export default function Store() {
                 ))}
               </ul>
             </div>
-            <div>
-              <h3 className="my-2 text-xl font-semibold text-gray-900 ">
+            <div className="pb-4">
+              <h3 className=" text-lg font-semibold text-custom-black">
                 Sort by
               </h3>
-              <ul className="w-full md:w-48 text-sm font-medium text-gray-900 bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
+              <ul className="w-full md:w-48 text-base font-family-Roboto font-normal text-custom-black bg-white border border-gray-400 divide-y px-2 divide-slate-600 rounded-lg ">
                 {sortByOptions.map((option, index) => (
                   <li key={index} class="w-full   ">
                     <div class="flex items-center pl-1">
@@ -245,7 +245,7 @@ export default function Store() {
                         // checked={option.optionId === sortBy}
                         className="w-5 h-5 accent-inherit bg-current text-red-600 checked:bg-red-600 checked:text-red-600 border-gray-300 rounded focus:ring-red-50 focus:ring-2 "
                       />
-                      <label class="w-full py-3 ml-2 text-sm font-medium text-gray-900 ">
+                      <label class="w-full py-3 ml-2 ">
                         {option.displayName}
                       </label>
                     </div>
@@ -257,13 +257,13 @@ export default function Store() {
         </aside>
         <div className="sm:flex  sm:flex-col">
           <form onSubmit={onSubmit}>
-            <div className="flex justify-center items-center py-3 px-10 bg-white rounded-b-xl">
+            <div className="flex justify-center items-center py-2 mb-4 px-80 bg-white rounded-b-xl">
               <div className="relative w-full">
                 <input
                   name="searchInput"
                   type="search"
                   onChange={onChange}
-                  className="block p-2.5 w-full z-20 text-base font-medium text-gray-900 bg-gray-50 rounded-lg   border border-gray-300 focus:ring-1 focus:ring-red-700 focus:border-red-700 focus:outline-none "
+                  className="block p-1.5 w-full z-20 text-lg font-medium text-gray-900 bg-gray-50 rounded-lg   border border-gray-300 focus:ring-1 focus:ring-red-700 focus:border-red-700 focus:outline-none "
                   placeholder="Search..."
                   value={formData.searchInput}
                   required
@@ -278,18 +278,16 @@ export default function Store() {
             </div>
           </form>
           <div>
-            <div className="p-1 border-gray-200 ">
-              <div>
-                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
-                  {allProducts.map((product) => (
-                    <ProductCard
-                      key={product.id}
-                      id={product.id}
-                      product={product.data}
-                    />
-                  ))}
-                </ul>
-              </div>
+            <div>
+              <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mx-2 ">
+                {allProducts.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    product={product.data}
+                  />
+                ))}
+              </ul>
             </div>
           </div>
         </div>

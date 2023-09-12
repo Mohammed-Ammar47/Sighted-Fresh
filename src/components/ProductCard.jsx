@@ -6,9 +6,9 @@ export default function ProductCard({ product, id }) {
   return (
     <>
       <li>
-        <div className="bg-white flex flex-col relative justify-between items-center shadow-md hover:shadow-xl rounded-lg overflow-hidden transition-shadow  duration-200 ease-in-out mx-2 my-2 ">
+        <div className="bg-white flex flex-col relative justify-between items-center shadow-md hover:shadow-xl rounded-lg overflow-hidden transition-shadow  duration-200 ease-in-out m-1 sm:m-2 ">
           {product.discountRate > 0 && (
-            <div class="text-base font-family-Roboto  absolute top-3 -left-9 -rotate-45 font-bold  py-0.5 px-12 uppercase rounded text-white bg-[#CE1212]  last:mr-0 mr-1">
+            <div class="text-sm sm:text-base font-family-Roboto  absolute top-3 -left-9 -rotate-45 font-bold  py-0.5 px-9 sm:px-12 uppercase rounded text-white bg-[#CE1212]  last:mr-0 mr-1">
               -{product.discountRate * 100} %
             </div>
           )}
@@ -16,14 +16,14 @@ export default function ProductCard({ product, id }) {
             onClick={() => {
               navigate(`/store/category/${product.type}/${id}`);
             }}
-            className="h-48 md:h-64 rounded-t-lg  hover:border-x-2 hover:border-t-2 hover:border-red-600 md:w-full "
+            className="h-40 sm:h-64 rounded-t-lg  hover:border-x-2 hover:border-t-2 hover:border-red-600 md:w-full "
           >
             <img
               className=" rounded-t-md inset-0 w-full h-full object-cover md:object-cover"
               src={product.image[0]}
             />
           </div>
-          <div className="w-full justify-center items-center text-custom-black border-2 border-red-600 rounded-b-lg text-lg">
+          <div className="w-full justify-center items-center text-custom-black border-2 border-red-600 rounded-b-lg text-sm sm:text-lg">
             <p className="px-3 font-semibold font-family-Convergence pb-2 pt-3   truncate  ">
               {product.name}
             </p>

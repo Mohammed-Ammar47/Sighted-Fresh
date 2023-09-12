@@ -17,7 +17,7 @@ export default function LogoCarousel() {
         <ul className="items-center justify-center flex w-full space-x-8 flex-wrap  p-0 m-0 space-y-8 ">
           {logos.map((logo) => (
             <li>
-              <img src={logo} className="m-auto h-14 sm:h-20 w-auto" />
+              <img src={logo} className="m-auto h-14 sm:h-20 " />
             </li>
           ))}
         </ul>

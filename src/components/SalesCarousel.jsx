@@ -4,10 +4,10 @@ export default function SalesCarousel() {
   return (
     <>
       {/*<!-- Component: Carousel with controls outside --> */}
-      <div className=" basis-3/5 ">
+      <div className=" sm:basis-3/5 ">
         {/*    <!-- Slides --> */}
         <div>
-          <ul className="flex flex-row justify-between space-x-4 p-0">
+          <ul className="flex flex-row justify-between space-x-4 w-full">
             <li>
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/sighted-fresh.appspot.com/o/sale%20banners%2FSale%20banner%2040%25%20design%20(1).png?alt=media&token=08c3080f-df85-44eb-896e-5472189de6ac"

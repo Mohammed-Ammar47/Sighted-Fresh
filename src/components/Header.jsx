@@ -30,22 +30,22 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex justify-between sticky w-full items-center  sm:py-2.5 sm:px-32 bg-[#F1F1F1] z-50">
+      <header className="flex justify-between sticky w-full items-center py-2.5 px-2 sm:px-32 bg-[#F1F1F1] z-50">
         <img
-          className="flex  h-5 md:h-10"
+          className="flex h-7 md:h-10"
           src="https://api.logo.com/api/v2/images?logo=logo_31050228-a10f-4014-9f77-8779b7a20f5f&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691277569"
         />
         <div
           onClick={() => {
             setOpen(!open);
           }}
-          className="text-2xl absolute right-2.5 top-3 cursor-pointer md:hidden  rounded-md hover:bg-gray-100 "
+          className="text-2xl absolute right-2.5 top-3 cursor-pointer sm:hidden  rounded-md hover:bg-gray-100 "
         >
           {open ? <GrClose /> : <GrMenu />}
         </div>
         <div
-          className={` right-0  p-3 sm:p-0 absolute sm:static sm:space-x-3 md:z-auto z-[5] w-full md:w-auto md:pl-0  transition-all duration-300 ease-in-out ${
-            open ? "top-10  " : "top-[-300px]"
+          className={` right-0  p-3 sm:p-0 absolute sm:static sm:space-x-3 md:z-auto z-[5] w-full md:w-auto md:pl-0 bg-white sm:bg-transparent transition-all duration-300 ease-in-out ${
+            open ? "top-12  " : "top-[-280px]"
           }`}
         >
           <ul className="flex bg-white ring-2 ring-white  rounded-full flex-col sm:flex-row">
@@ -53,7 +53,7 @@ export default function Header() {
               onClick={() => {
                 navigate("/");
               }}
-              className={` items-center rounded-full text-base lg:text-lg font-medium  px-2.5 font-family-Roboto hover:ring-[#E70000] hover:ring-2 focus:ring-white cursor-pointer ${
+              className={`mb-2 sm:mb-0 items-center rounded-full text-base lg:text-lg font-medium  px-2.5 font-family-Roboto hover:ring-[#E70000] hover:ring-2 focus:ring-white cursor-pointer ${
                 currentPath === "/"
                   ? "bg-[#E70000] text-[#F1F1F1] ring-[#E70000] ring-2"
                   : "bg-white text-[#E70000] ring-white ring-2"
@@ -65,7 +65,7 @@ export default function Header() {
               onClick={() => {
                 navigate("/store");
               }}
-              className={` items-center rounded-full text-base lg:text-lg font-medium px-2.5 mx-1 font-family-Roboto focus:outline-none focus:ring-2  hover:ring-[#E70000] hover:ring-2 focus:ring-white cursor-pointer ${
+              className={`mb-2 sm:mb-0 items-center rounded-full text-base lg:text-lg font-medium px-2.5 sm:mx-1 font-family-Roboto focus:outline-none focus:ring-2  hover:ring-[#E70000] hover:ring-2 focus:ring-white cursor-pointer ${
                 currentPath === "/store"
                   ? "bg-[#E70000] text-[#F1F1F1] ring-[#E70000] ring-2"
                   : "bg-white text-[#E70000] ring-white ring-2"
@@ -77,7 +77,7 @@ export default function Header() {
               onClick={() => {
                 navigate("/deals");
               }}
-              className={`items-center rounded-full text-base lg:text-lg font-medium font-family-Roboto px-2.5 hover:ring-[#E70000] hover:ring-2 cursor-pointer ${
+              className={`mb-2 sm:mb-0 items-center rounded-full text-base lg:text-lg font-medium font-family-Roboto px-2.5 hover:ring-[#E70000] hover:ring-2 cursor-pointer ${
                 currentPath === "/deals"
                   ? "bg-[#E70000] text-[#F1F1F1] ring-[#E70000] ring-2"
                   : "bg-white text-[#E70000] ring-white ring-2"
@@ -87,7 +87,7 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <ul className="flex space-x-2 sm:space-x-5">
+        <ul className="flex space-x-2 pr-8 sm:space-x-5">
           <li
             onClick={() => {
               navigate("/cart");
@@ -99,7 +99,7 @@ export default function Header() {
             }`}
           >
             <p className="hidden sm:flex">Cart </p>
-            <PiShoppingCartBold className="sm:hidden px-0" />
+            <PiShoppingCartBold className="sm:hidden text-xl px-0" />
           </li>
           <li
             onClick={() => {
@@ -114,12 +114,12 @@ export default function Header() {
             {userState === "signed out" ? (
               <>
                 <p className="hidden sm:flex">Sign In </p>
-                <PiUserCirclePlusBold className="sm:hidden px-0" />
+                <PiUserCirclePlusBold className="sm:hidden text-xl px-0" />
               </>
             ) : (
               <>
                 <p className="hidden sm:flex">Profile</p>
-                <PiUserCircleBold className="sm:hidden px-0" />
+                <PiUserCircleBold className="sm:hidden text-xl px-0" />
               </>
             )}
           </li>

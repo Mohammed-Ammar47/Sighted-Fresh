@@ -47,23 +47,23 @@ export default function Home() {
     <>
       {/* Section 1 */}
       <div
-        className={`bg-[url(https://firebasestorage.googleapis.com/v0/b/sighted-fresh.appspot.com/o/david-lezcano-NfZiOJzZgcg-unsplash.jpg?alt=media&token=1b0ef250-db26-4c06-8a6d-451143989ce5)] flex items-center bg-cover  w-full h-screen px-32 ring-2 ring-red-600`}
+        className={`bg-[url(https://firebasestorage.googleapis.com/v0/b/sighted-fresh.appspot.com/o/david-lezcano-NfZiOJzZgcg-unsplash.jpg?alt=media&token=1b0ef250-db26-4c06-8a6d-451143989ce5)] flex items-center bg-cover justify-center sm:justify-start sm:w-full sm:h-screen  sm:px-32 ring-2 ring-red-600`}
       >
         <div
-          className={`content-center text-white  text-center md:text-left lg:text-justify`}
+          className={` text-white py-6 text-center sm:text-left lg:text-justify`}
         >
-          <p className="text-4xl font-bold pb-4 font-family-Montserrat">
+          <p className="text-lg sm:text-4xl font-bold pb-2 sm:pb-4 font-family-Montserrat">
             Don't stress about the dress, <br /> We'll dress you to impress.
           </p>
-          <p className="text-xl leading-10 font-medium pb-4 font-family-Convergence">
+          <p className="text-base sm:text-[28px] leading-10 font-medium pb-2 sm:pb-4 font-family-Convergence">
             Shop and find the perfect fit for you
           </p>
-          <div className="flex flex-row space-x-4">
+          <div className="flex justify-center sm:justify-start space-x-4">
             <button
               onClick={() => {
                 navigate("/store");
               }}
-              className=" justify-center items-center rounded-full text-base lg:text-lg font-medium font-family-Roboto px-2.5 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] cursor-pointer"
+              className=" justify-center items-center rounded-full text-sm sm:text-lg font-medium font-family-Roboto px-2.5 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] cursor-pointer"
             >
               Start Shopping
             </button>
@@ -71,20 +71,19 @@ export default function Home() {
         </div>
       </div>
       {/* Section 2 */}
-      <div className="w-auto mx-32 my-24">
-        <div className=" flex flex-col justify-center  p-8 rounded-2xl bg-[#F1F1F1]">
+      <div className="w-auto mx-4 sm:mx-32 my-9 sm:my-24">
+        <div className=" flex flex-col justify-center p-2 sm:p-8 rounded-2xl bg-[#F1F1F1]">
           <h2 className="text-center flex flex-col font-semibold text-lg sm:text-4xl font-family-Montserrat">
             Our Products
           </h2>
-
           <LogoCarousel />
         </div>
       </div>
-
-      <div className="mx-32 my-24 bg-[#F1F1F1] rounded-2xl flex p-8">
-        <div className="flex flex-col basis-2/5 ">
+      {/* Section 3 */}
+      <div className="mx-4 sm:mx-32 my-9 sm:my-24 bg-[#F1F1F1] rounded-2xl flex flex-col sm:flex-row p-4 sm:p-8">
+        <div className="flex sm:flex-col sm:basis-2/5 ">
           <div>
-            <p className="text-[28px] font-semibold font-family-Montserrat">
+            <p className="text-[16px] sm:text-[28px] font-semibold font-family-Montserrat">
               Take this opportunity,
               <br />
               Check our latest special offers and discounts
@@ -93,7 +92,7 @@ export default function Home() {
               onClick={() => {
                 navigate("/deals");
               }}
-              className="my-4 w-auto justify-center items-center rounded-full text-base lg:text-lg font-medium font-family-Roboto px-2.5 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] cursor-pointer"
+              className="my-4 w-auto justify-center items-center rounded-full text-sm sm:text-lg font-medium font-family-Roboto px-2.5 bg-white text-[#E70000] hover:bg-[#E70000] hover:text-[#F1F1F1] cursor-pointer"
             >
               Go to Deals
             </button>
@@ -104,8 +103,8 @@ export default function Home() {
 
       {/* Latest products */}
 
-      <div className="sm:mx-32">
-        <div className="flex flex-row justify-between text-[28px] font-semibold font-family-Montserrat border-b-2 pb-2 border-[#E70000]">
+      <div className="mx-4 sm:mx-32">
+        <div className="flex flex-row justify-between text-base sm:text-[28px] font-semibold font-family-Montserrat border-b-2 pb-2 border-[#E70000]">
           <p className="text-custom-black">Latest products</p>
           <p className="text-red-600 ">
             <Link
@@ -116,7 +115,7 @@ export default function Home() {
             </Link>
           </p>
         </div>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 space-x-4 my-4">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 my-2 sm:my-4">
           {latestProducts.map((product) => (
             <ProductCard
               key={product.id}

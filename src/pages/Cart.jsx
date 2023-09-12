@@ -71,7 +71,7 @@ export default function Cart() {
       <h2 className=" flex justify-center text-[28px] text-custom-black font-family-Montserrat font-semibold my-4 ">
         Shopping Cart
       </h2>
-      <section className="flex flex-col sm:flex-row  sm:mx-32 lg:space-x-3 ">
+      <section className="flex flex-col sm:flex-row mx-4 sm:mx-32 lg:space-x-3 ">
         <div className="w-full flex flex-row  justify-center items-center border bg-white  lg:mx-auto rounded-lg shadow-lg max-w-xl lg:max-w-4xl divide-y divide-slate-100">
           {CartItems.length === 0 ? (
             <p className="text-xl font-semibold p-3">
@@ -92,7 +92,7 @@ export default function Cart() {
             </ul>
           )}
         </div>
-        <div className="my-3 md:mt-6  md:my-5 h-full rounded-lg border bg-white p-4 shadow-md font-family-Roboto text-lg text-custom-black md:w-1/3">
+        <div className="my-3 md:mt-6  md:my-5 h-full rounded-lg border bg-white p-4 shadow-md font-family-Roboto text-sm sm:text-lg text-custom-black md:w-1/3">
           <div className="mb-2 flex justify-between">
             <p>Subtotal</p>
             <p>${sum()}</p>

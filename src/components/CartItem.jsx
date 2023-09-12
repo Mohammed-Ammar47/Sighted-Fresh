@@ -29,7 +29,7 @@ export default function CartItem({ id, item, onDelete }) {
         <img
           src={item.productImage}
           alt=""
-          className="flex-none rounded-md md:h-40 w-full md:w-28 bg-slate-100 object-cover shadow-xl"
+          className="flex-none rounded-md w-full sm:h-40  md:w-28 bg-slate-100 object-contain shadow-xl"
         />
 
         <div className=" flex flex-col relative w-full text-lg text-custom-black">
@@ -94,7 +94,6 @@ export default function CartItem({ id, item, onDelete }) {
           >
             <CiSquareRemove />
           </button>
-
           <p className="px-1 text-2xl  my-2 font-medium rounded w-auto">
             $
             {Math.floor(

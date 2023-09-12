@@ -162,14 +162,14 @@ export default function Store() {
     <>
       <div className="flex flex-row ">
         <aside
-          class={`  md:relative top-32 sm:top-0 left-0 z-40 w-60 absolute transition-transform duration-300 ${
+          class={`  md:relative top-12 sm:top-0 left-0 z-40 w-60 absolute transition-transform duration-300 ${
             openSidebar ? "translate-x-0" : "-translate-x-full"
           }  md:translate-x-0`}
           aria-label="Sidebar"
         >
           <button
             type="button"
-            className="-right-11 absolute items-center p-2 mt-2 ml-3 text-sm bg-white ring-2 ring-red-600 -z-10 border-gray-50 text-gray-500 rounded-tr-lg rounded-br-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-600"
+            className="-right-11 absolute top-36 items-center p-2 mt-2 ml-3 text-sm bg-white ring-2 ring-red-600 -z-10 border-gray-50 text-gray-500 rounded-tr-lg rounded-br-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-600"
           >
             <span className="sr-only">Open sidebar</span>
             <AdjustmentsVerticalIcon
@@ -255,22 +255,22 @@ export default function Store() {
             </div>
           </div>
         </aside>
-        <div className="sm:flex  sm:flex-col">
+        <div className="sm:flex sm:flex-col">
           <form onSubmit={onSubmit}>
-            <div className="flex justify-center items-center py-2 mb-4 px-80 bg-white rounded-b-xl">
-              <div className="relative w-full">
+            <div className="flex justify-center items-center py-2 mb-4 px-4 sm:px-80 bg-white rounded-b-xl">
+              <div className="relative flex flex-nowrap w-full">
                 <input
                   name="searchInput"
                   type="search"
                   onChange={onChange}
-                  className="block p-1.5 w-full z-20 text-lg font-medium text-gray-900 bg-gray-50 rounded-lg   border border-gray-300 focus:ring-1 focus:ring-red-700 focus:border-red-700 focus:outline-none "
+                  className="block p-1.5 w-full z-20 text sm:text-lg font-medium text-gray-900 bg-gray-50 rounded-l-lg border border-gray-300 focus:ring-1 focus:ring-red-700 focus:border-red-700 focus:outline-none "
                   placeholder="Search..."
                   value={formData.searchInput}
                   required
                 />
                 <button
                   type="submit"
-                  className="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-red-700 rounded-r-lg border border-red-700 hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-600 "
+                  className="flex-nowrap top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-red-700 rounded-r-lg border border-red-700 hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-600 "
                 >
                   <AiOutlineSearch className="text-xl" />
                 </button>
